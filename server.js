@@ -1,7 +1,7 @@
 const db = require('./models');
 const prompt = require('prompt-sync')({sigint: true});
 const controller = require('./controller');
-const page = require('./pages');
+// const page = require('./pages');
 
 (async () => {
     try {
