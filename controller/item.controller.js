@@ -74,3 +74,4 @@ exports.delete = async (idBarang) => {
           idBarang: idBarang
         }
     });
+}
