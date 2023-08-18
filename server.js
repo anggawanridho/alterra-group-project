@@ -1,7 +1,7 @@
 const db = require('./models');
 const prompt = require('prompt-sync')({sigint: true});
 const controller = require('./controller');
-const page = require('./pages');
+// const page = require('./pages');
 
 let isRunning = true;
 
@@ -24,6 +24,16 @@ let isRunning = true;
         switch (Number(menu)) {
             case 1:
                 // login
+                while (condition) {
+                    switch (key) {
+                        case value:
+                            
+                            break;
+                    
+                        default:
+                            break;
+                    }   
+                }
                 break;
             case 2:
                 //register
