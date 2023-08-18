@@ -7,3 +7,9 @@ exports.create = async (username, pass) => {
     });
     return result;
 }
+exports.update = async () =>{
+    await User.update({
+        set: {},
+        where:{}
+    })
+}
