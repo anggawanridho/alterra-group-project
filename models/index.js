@@ -14,4 +14,11 @@ db.sequelize = sequelize;
 db.user = require('./user.model')(sequelize, Sequelize);
 db.barang = require('./item.model')(sequelize, Sequelize);
 
+// setting asosiasi
+db.user.hasMany(db.barang, {
+    foreignKey: 'userId',
+    onDelete: 'CASCADE'
+});
+// db.barang.belongsTo(db.user);
+
 module.exports = db;

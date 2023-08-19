@@ -32,13 +32,18 @@ exports.create = async (
     }
 
 exports.showAll = async () => {
-    const result = await db.barang.findAll({
-        order: [
-            ['tanggalMasuk', 'ASC'],
-            ['jumlahStok', 'ASC']
-        ]
-    });
-    return result;
+    try {
+        const result = await db.barang.findAll({
+            order: [
+                ['tanggalMasuk', 'ASC'],
+                ['jumlahStok', 'ASC']
+            ]
+        });
+        return result;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
 }
 
 exports.update = async (idBarang,
@@ -51,27 +56,37 @@ exports.update = async (idBarang,
     distributor,
     lokasiStok,
     deskripsiBarang) => {
-    await db.barang.update({
-        namaBarang: namaBarang,
-        kategoriBarang: kategoriBarang,
-        harga: harga,
-        jumlahStok: jumlahStok,
-        tanggalMasuk: tanggalMasuk,
-        tanggalKadaluarsa: tanggalKadaluarsa,
-        distributor: distributor,
-        lokasiStok: lokasiStok,
-        deskripsiBarang: deskripsiBarang
-    }, {
-        where: {
-          idBarang: idBarang
+        try {
+            await db.barang.update({
+                namaBarang: namaBarang,
+                kategoriBarang: kategoriBarang,
+                harga: harga,
+                jumlahStok: jumlahStok,
+                tanggalMasuk: tanggalMasuk,
+                tanggalKadaluarsa: tanggalKadaluarsa,
+                distributor: distributor,
+                lokasiStok: lokasiStok,
+                deskripsiBarang: deskripsiBarang
+            }, {
+                where: {
+                idBarang: idBarang
+                }
+            });
+        } catch (error) {
+            console.log(error);
+            throw error;
         }
-    });
 }
 
 exports.delete = async (idBarang) => {
-    await db.barang.destroy({
-        where: {
-          idBarang: idBarang
-        }
-    });
+    try {
+        await db.barang.destroy({
+            where: {
+              idBarang: idBarang
+            }
+        });
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
 }
