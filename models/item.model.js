@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
         distributor: { type: DataTypes.STRING, defaultValue: 'Belum diisi' },
         lokasiStok: { type: DataTypes.STRING, defaultValue: 'Belum diisi' },
         deskripsiBarang: { type: DataTypes.TEXT, defaultValue: 'Deskripsi default' },
-        createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
+        createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+        userId: { type: DataTypes.STRING, allowNull: false }
     },
     {
         timestamps: false

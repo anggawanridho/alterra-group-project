@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 exports.create = async (username, pass) => {
     try {
         const result = await db.user.create({
-            id: username,
+            userId: username,
             password: pass
         });
         return result;
@@ -19,20 +19,23 @@ exports.create = async (username, pass) => {
 exports.auth = async (username, password) => {
     const user = await db.user.findOne ({
         where: {
-            id: username
+            userId: username
         }
     });
 
     if (!user) {
+        console.clear();
         return console.log(`\n\nUser not found!`);
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (isPasswordValid) {
+        console.clear();
         console.log(`\n\nAuthenticated`); // true
         return user;
     } else {
+        console.clear();
         console.log(`\n\nAuthentication failed`);
         return false;
     }
